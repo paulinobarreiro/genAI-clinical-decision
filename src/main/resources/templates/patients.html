@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patients</title>
+    <script src="https://unpkg.com/htmx.org@1.5.0"></script>
+</head>
+<body>
+<div th:include="fragments/menu :: menu"></div>
+<h1>Patients</h1>
+<form id="searchForm" hx-post="/patients/search" hx-target="#patientList">
+    <input type="text" name="name" placeholder="Search by name">
+    <button type="submit">Search</button>
+</form>
+<form id="registerForm" hx-post="/patients/register" hx-target="#patientList">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="document" placeholder="Document">
+    <button type="submit">Register</button>
+</form>
+<div id="patientList" th:include="fragments/patient-list :: patientList"></div>
+</body>
+</html>
